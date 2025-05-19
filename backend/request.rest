@@ -1,0 +1,405 @@
+### Health Check
+GET http://localhost:5000/health
+
+### IMPORTANT: Before running these requests, make sure to set up your .env file with JWT secrets
+# Create a .env file in the backend directory with the following variables:
+# ACCESS_TOKEN_SECRET=your_access_token_secret_here
+# REFRESH_TOKEN_SECRET=your_refresh_token_secret_here
+# 
+# You can generate secure random strings for these secrets using Node.js:
+# node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+### Register User
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "email": "customer@example.com",
+    "username": "customer",
+    "password": "password123"
+}
+
+### Register Admin
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "username": "admin",
+    "password": "admin123",
+    "role": "admin"
+}
+
+### Login
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "admin123"
+}
+
+### Create Medicines (20 Sample Medicines for Database)
+### Replace YOUR_ADMIN_TOKEN_HERE with your actual admin token after login
+
+### 1. Paracetamol
+POST http://localhost:5000/medicines
+Authorization: Bearer YOUR_ADMIN_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "name": "Paracetamol 500mg",
+    "description": "Pain reliever and fever reducer suitable for adults and children over 12 years. Effective for headaches, muscle aches, arthritis, backaches, toothaches, colds, and fevers.",
+    "price": 5000,
+    "category": "Pain Relief",
+    "stock": 150,
+    "manufacturer": "MedCare Pharma",
+    "dosage": "500mg tablet",
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-12-31",
+    "featured": true
+}
+
+### 2. Amoxicillin
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Amoxicillin 500mg",
+    "description": "Broad-spectrum antibiotic used to treat a range of bacterial infections including bronchitis, pneumonia, and infections of the ear, nose, throat, urinary tract, and skin.",
+    "price": 15000,
+    "category": "Antibiotics",
+    "stock": 80,
+    "manufacturer": "Healthline Laboratories",
+    "dosage": "500mg capsule",
+    "image": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2024-10-15",
+    "featured": false
+}
+
+### 3. Vitamin C
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Vitamin C 1000mg",
+    "description": "High-potency vitamin C supplement that supports immune function, collagen formation, and acts as an antioxidant to protect cells from free radical damage.",
+    "price": 25000,
+    "category": "Vitamins & Supplements",
+    "stock": 100,
+    "manufacturer": "NutraHealth",
+    "dosage": "1000mg effervescent tablet",
+    "image": "https://images.unsplash.com/photo-1584472876019-451f8760a92a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2026-05-20",
+    "featured": true
+}
+
+### 4. Loratadine
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Loratadine 10mg",
+    "description": "Non-drowsy antihistamine that relieves symptoms of allergies including runny nose, sneezing, itchy or watery eyes, and itching of the nose or throat.",
+    "price": 12000,
+    "category": "Allergy",
+    "stock": 75,
+    "manufacturer": "AllerCare",
+    "dosage": "10mg tablet",
+    "image": "https://images.unsplash.com/photo-1550572017-edd951b55104?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-08-14",
+    "featured": false
+}
+
+### 5. Omeprazole
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Omeprazole 20mg",
+    "description": "Proton pump inhibitor that decreases the amount of acid produced in the stomach. Used to treat frequent heartburn, gastroesophageal reflux disease (GERD), and other conditions caused by excess stomach acid.",
+    "price": 18000,
+    "category": "Digestive Health",
+    "stock": 60,
+    "manufacturer": "GastroHealth",
+    "dosage": "20mg delayed-release capsule",
+    "image": "https://images.unsplash.com/photo-1587854692457-15a399cb58ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-04-30",
+    "featured": true
+}
+
+### 6. Hydrocortisone Cream
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Hydrocortisone Cream 1%",
+    "description": "Topical corticosteroid that reduces the actions of chemicals in the body that cause inflammation, redness, and swelling. Used for various skin conditions including eczema, dermatitis, allergies, and rash.",
+    "price": 21000,
+    "category": "Skin Care",
+    "stock": 40,
+    "manufacturer": "DermaCare",
+    "dosage": "1% w/w cream, 20g tube",
+    "image": "https://images.unsplash.com/photo-1571781565036-d3f759be73e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2024-11-20",
+    "featured": false
+}
+
+### 7. Aspirin
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Aspirin 325mg",
+    "description": "Anti-inflammatory pain reliever that can help reduce the risk of heart attack and stroke. Used to reduce fever and relieve mild to moderate pain from conditions such as muscle aches, toothaches, common cold, and headaches.",
+    "price": 7500,
+    "category": "Pain Relief",
+    "stock": 120,
+    "manufacturer": "HeartCare Pharma",
+    "dosage": "325mg tablet",
+    "image": "https://images.unsplash.com/photo-1626285850597-a39d31a4c8e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2026-01-15",
+    "featured": true
+}
+
+### 8. Metformin
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Metformin 500mg",
+    "description": "Oral diabetes medicine that helps control blood sugar levels. First-line medication for the treatment of type 2 diabetes, particularly in people who are overweight.",
+    "price": 16500,
+    "category": "Diabetes Care",
+    "stock": 90,
+    "manufacturer": "GlucoHealth",
+    "dosage": "500mg tablet",
+    "image": "https://images.unsplash.com/photo-1622227922682-56c92e523e58?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-06-30",
+    "featured": false
+}
+
+### 9. Salbutamol Inhaler
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Salbutamol Inhaler 100mcg",
+    "description": "Bronchodilator that relaxes muscles in the airways and increases air flow to the lungs. Used to treat or prevent bronchospasm in people with asthma, bronchitis, emphysema, and other lung diseases.",
+    "price": 35000,
+    "category": "Respiratory",
+    "stock": 45,
+    "manufacturer": "BreathEasy Pharma",
+    "dosage": "100mcg/dose inhaler, 200 doses",
+    "image": "https://images.unsplash.com/photo-1603398938378-e54eab446dde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-09-10",
+    "featured": true
+}
+
+### 10. Ibuprofen
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Ibuprofen 400mg",
+    "description": "Nonsteroidal anti-inflammatory drug (NSAID) that reduces hormones causing inflammation and pain in the body. Used for pain relief, fever reduction, and reducing swelling.",
+    "price": 8500,
+    "category": "Anti-Inflammatory",
+    "stock": 110,
+    "manufacturer": "PainAway Labs",
+    "dosage": "400mg tablet",
+    "image": "https://images.unsplash.com/photo-1584308667839-c4c2304f9555?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-07-25",
+    "featured": false
+}
+
+### 11. Cetirizine
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Cetirizine 10mg",
+    "description": "Second-generation antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching.",
+    "price": 13500,
+    "category": "Allergy",
+    "stock": 85,
+    "manufacturer": "AllerCare",
+    "dosage": "10mg tablet",
+    "image": "https://images.unsplash.com/photo-1628771065518-0d82f1938462?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-11-05",
+    "featured": true
+}
+
+### 12. Multivitamin
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Daily Multivitamin",
+    "description": "Complete multivitamin and mineral supplement formulated to support overall health and wellness, immune function, energy metabolism, and fill nutritional gaps in the diet.",
+    "price": 30000,
+    "category": "Vitamins & Supplements",
+    "stock": 70,
+    "manufacturer": "NutraHealth",
+    "dosage": "Tablet, 30 tablets",
+    "image": "https://images.unsplash.com/photo-1577969089662-c45decd68c5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2026-02-28",
+    "featured": false
+}
+
+### 13. Artificial Tears
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Artificial Tears Eye Drops",
+    "description": "Lubricating eye drops that provide relief from dry eyes due to insufficient tear production, digital eye strain, environmental factors, or certain medical conditions.",
+    "price": 22500,
+    "category": "Eye Care",
+    "stock": 55,
+    "manufacturer": "OptiCare",
+    "dosage": "0.5% solution, 10ml bottle",
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2024-12-15",
+    "featured": true
+}
+
+### 14. Folic Acid
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Folic Acid 5mg",
+    "description": "B vitamin that helps the body produce and maintain new cells. Especially important during periods of rapid cell division and growth such as pregnancy and infancy.",
+    "price": 17000,
+    "category": "Vitamins & Supplements",
+    "stock": 65,
+    "manufacturer": "PreNatal Care",
+    "dosage": "5mg tablet",
+    "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-05-18",
+    "featured": false
+}
+
+### 15. Antacid Tablets
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Antacid Chewable Tablets",
+    "description": "Fast-acting relief for acid indigestion, heartburn, and sour stomach. Contains calcium carbonate and magnesium hydroxide to neutralize stomach acid.",
+    "price": 9500,
+    "category": "Digestive Health",
+    "stock": 95,
+    "manufacturer": "GastroHealth",
+    "dosage": "Chewable tablet, 36 tablets",
+    "image": "https://images.unsplash.com/photo-1607619424470-d61f77657d08?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-03-10",
+    "featured": true
+}
+
+### 16. Antiseptic Solution
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Antiseptic Solution",
+    "description": "First aid antiseptic that helps prevent infection in minor cuts, scrapes, and burns. Contains chlorhexidine gluconate to kill germs that can cause infection.",
+    "price": 14500,
+    "category": "First Aid",
+    "stock": 60,
+    "manufacturer": "SafeCare",
+    "dosage": "2% w/v solution, 100ml bottle",
+    "image": "https://images.unsplash.com/photo-1584308666989-a27bfb0135a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2026-04-22",
+    "featured": false
+}
+
+### 17. Cough Syrup
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Cough Suppressant Syrup",
+    "description": "Relieves cough due to minor throat and bronchial irritation associated with the common cold or inhaled irritants. Contains dextromethorphan to suppress cough reflex.",
+    "price": 19500,
+    "category": "Cold & Flu",
+    "stock": 70,
+    "manufacturer": "RespiCare",
+    "dosage": "15mg/5ml syrup, 120ml bottle",
+    "image": "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-01-30",
+    "featured": true
+}
+
+### 18. Atenolol
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Atenolol 50mg",
+    "description": "Beta-blocker that affects the heart and circulation. Used to treat angina (chest pain) and hypertension (high blood pressure), and to improve survival after a heart attack.",
+    "price": 23500,
+    "category": "Heart Health",
+    "stock": 50,
+    "manufacturer": "CardioHealth",
+    "dosage": "50mg tablet",
+    "image": "https://images.unsplash.com/photo-1603825109753-5dbbca55a59e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-08-05",
+    "featured": false
+}
+
+### 19. Loperamide
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Loperamide 2mg",
+    "description": "Anti-diarrheal medication that slows down the movement of the gut. This decreases the number of bowel movements and makes the stool less watery.",
+    "price": 11000,
+    "category": "Digestive Health",
+    "stock": 80,
+    "manufacturer": "GastroHealth",
+    "dosage": "2mg capsule",
+    "image": "https://images.unsplash.com/photo-1584308665466-fb93539a6dc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-10-12",
+    "featured": true
+}
+
+### 20. Diclofenac Gel
+POST http://localhost:5000/medicines
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJjcmVhdGVkQXQiOiIyMDI1LTA1LTE5VDE1OjEyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTA1LTE5VDE2OjA0OjQzLjAwMFoiLCJpYXQiOjE3NDc2NzEwNjAsImV4cCI6MTc0NzY3Mjg2MH0.gPAV_CZDVHUKTMfbYTLcUSyvY9BblJTuXvlDfmzmFzY
+Content-Type: application/json
+
+{
+    "name": "Diclofenac Gel 1%",
+    "description": "Topical nonsteroidal anti-inflammatory drug (NSAID) used to relieve joint pain associated with osteoarthritis. Applied directly to the affected area to reduce inflammation and pain.",
+    "price": 27500,
+    "category": "Anti-Inflammatory",
+    "stock": 45,
+    "manufacturer": "JointCare",
+    "dosage": "1% w/w gel, 30g tube",
+    "image": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "expiry_date": "2025-09-20",
+    "featured": false
+}
+
+

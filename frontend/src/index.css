@@ -1,0 +1,280 @@
+:root {
+  --primary-color: #4d79ff; /* Pharmaceutical blue */
+  --primary-dark: #3366ff;
+  --primary-light: #7a9bff;
+  --secondary-color: #6c757d;
+  --accent-color: #00c9a7; /* Mint green for pharmacy feel */
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --success-color: #35b653;
+  --danger-color: #e63946;
+  --warning-color: #ffc145;
+  --bg-color: #f6f9fc;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 20px rgba(77, 121, 255, 0.1);
+  --transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: #333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.pharmacy-brand {
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Card styling */
+.card {
+  border: none;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(77, 121, 255, 0.15);
+}
+
+/* Button styling */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(77, 121, 255, 0.2);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  color: white;
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+/* Medicine card styling */
+.medicine-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.medicine-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.medicine-card .card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.medicine-img-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.medicine-img {
+  max-height: 100%;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.medicine-card:hover .medicine-img {
+  transform: scale(1.05);
+}
+
+.page-heading {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.page-heading:after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  border-radius: 10px;
+}
+
+/* Badge styling */
+.badge {
+  padding: 0.5em 0.8em;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.badge-category {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 400;
+}
+
+/* Order status badges */
+.status-badge-pending {
+  background-color: var(--warning-color);
+}
+
+.status-badge-processing {
+  background-color: var(--primary-color);
+}
+
+.status-badge-shipped {
+  background-color: var(--accent-color);
+}
+
+.status-badge-completed {
+  background-color: var(--success-color);
+}
+
+.status-badge-cancelled {
+  background-color: var(--danger-color);
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: white;
+  min-height: calc(100vh - 76px);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+}
+
+.sidebar .nav-link {
+  color: var(--dark-color);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 0.25rem;
+  transition: var(--transition);
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: var(--primary-light);
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Responsive table */
+.table-responsive {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Forms */
+.form-control, .form-select {
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #e0e0e0;
+  transition: var(--transition);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(77, 121, 255, 0.25);
+}
+
+/* Custom pharmacy decoration */
+.pharmacy-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234d79ff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Animation for loaders */
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* 3D Medicine Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.medicine-animation-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .medicine-animation-container {
+    transform: scale(0.7);
+    margin: 0 auto;
+  }
+}
