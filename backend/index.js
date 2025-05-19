@@ -12,16 +12,13 @@ const app = express();
 
 // Configure CORS for credentials
 app.use(cors({
-  // Allow requests from these origins (add your frontend URL)
   origin: [
     'https://frontend-notes-febrian-dot-g-09-450802.uc.r.appspot.com',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    null 
   ],
-  // Allow credentials (cookies)
   credentials: true,
-  // Allowed HTTP methods
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  // Allowed headers
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 

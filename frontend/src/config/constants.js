@@ -1,4 +1,6 @@
-export const API_URL = 'http://localhost:5000';
+import { BASE_URL } from '../utils';
+
+export const API_URL = BASE_URL;
 
 export const ORDER_STATUS = {
   PENDING: 'pending',
