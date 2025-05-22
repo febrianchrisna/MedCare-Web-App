@@ -14,9 +14,9 @@ POST http://localhost:5000/register
 Content-Type: application/json
 
 {
-    "email": "customer@example.com",
-    "username": "customer",
-    "password": "password123"
+    "email": "babi@example.com",
+    "username": "cust",
+    "password": "123123"
 }
 
 ### Register Admin
