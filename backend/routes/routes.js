@@ -1,5 +1,5 @@
 import express from 'express';
-import { login, register, logout, getUser } from '../controller/UserController.js';
+import { login, register, logout, getUser, updateProfile } from '../controller/UserController.js';
 import { 
     getMedicines, getMedicineById, createMedicine, 
     updateMedicine, deleteMedicine, getCategories 
@@ -22,6 +22,9 @@ router.get("/token", refreshToken);
 // ==================== ADMIN ROUTES (khusus admin) ====================
 // User management (admin only)
 router.get("/users", verifyToken, isAdmin, getUser);
+
+// User Profile (for logged in users)
+router.put("/profile", verifyToken, updateProfile);
 
 // Medicine management (admin only)
 router.get("/medicines", getMedicines);

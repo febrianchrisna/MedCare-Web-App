@@ -170,4 +170,64 @@ async function logout(req, res) {
   return res.sendStatus(200);
 }
 
-export { login, logout, getUser, register };
+// Update user profile
+async function updateProfile(req, res) {
+  try {
+    const userId = req.userId;
+    const { username, profileImage } = req.body;
+
+    // Find the user
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({
+        status: "Error",
+        message: "User not found"
+      });
+    }
+
+    // Prepare update object
+    const updateData = {};
+
+    // Update username if provided
+    if (username) {
+      updateData.username = username;
+    }
+
+    // Update profile image if provided
+    if (profileImage) {
+      updateData.profileImage = profileImage;
+    }
+
+    // If no updates, return early
+    if (Object.keys(updateData).length === 0) {
+      return res.status(400).json({
+        status: "Error",
+        message: "No update data provided"
+      });
+    }
+
+    // Update user
+    await User.update(updateData, {
+      where: { id: userId }
+    });
+
+    // Get updated user (exclude password and refresh token)
+    const updatedUser = await User.findByPk(userId, {
+      attributes: ['id', 'username', 'email', 'role', 'profileImage']
+    });
+
+    res.status(200).json({
+      status: "Success",
+      message: "Profile updated successfully",
+      data: updatedUser
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({
+      status: "Error",
+      message: error.message
+    });
+  }
+}
+
+export { login, logout, getUser, register, updateProfile };
